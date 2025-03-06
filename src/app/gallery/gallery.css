@@ -1,0 +1,94 @@
+.gallery-container {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Custom styling for the photo album */
+  .react-photo-album {
+    margin-bottom: 2rem;
+  }
+  
+  .react-photo-album img {
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    max-height: 180px !important; /* Force smaller height */
+    border-radius: 4px;
+  }
+  
+  .react-photo-album--masonry {
+    gap: 4px !important;
+  }
+  
+  .react-photo-album--masonry div {
+    overflow: hidden;
+    border-radius: 4px;
+    gap: 15px;
+  }
+  
+  .react-photo-album--masonry div:hover img {
+    transform: scale(1.05);
+  }
+  
+  /* Custom styling for the lightbox */
+  .yarl__container {
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+  
+  .yarl__slide_image {
+    object-fit: contain;
+  }
+  
+  .yarl__thumbnails_thumbnail {
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .yarl__thumbnails_thumbnail_active {
+    border: 2px solid white;
+  }
+  
+  .yarl__thumbnails_vignette {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  .yarl__caption_content {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+  
+  /* Smaller thumbnails styling */
+  .thumbnail-container {
+    max-height: 180px;
+    overflow: hidden;
+  }
+  
+  .thumbnail-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  /* Make the masonry layout more compact */
+  
+  /* Adjust hover effect for smaller thumbnails */
+  .thumbnail-container:hover img {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .yarl__thumbnails_track {
+      height: 60px;
+    }
+  
+    .yarl__thumbnails_thumbnail {
+      width: 80px;
+      height: 60px;
+    }
+  }
+  
+  
