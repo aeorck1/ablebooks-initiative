@@ -26,11 +26,11 @@ export default function Footer() {
           <div className="nav">
             <Link href="/books">Books</Link>
           </div>
-          <div className="nav">
+          {/* <div className="nav">
             <a href="https://blog.ablebooksafrica.com" target="_blank" rel="noopener noreferrer">
               Our Blog
             </a>
-          </div>
+          </div> */}
           <div className="nav">
             <Link href="/gallery">Our Gallery</Link>
           </div>
