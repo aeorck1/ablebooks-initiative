@@ -1,10 +1,8 @@
 import { readdir } from "fs/promises"
 import path from "path"
 import { NextResponse } from "next/server"
-import { stat } from "fs/promises"
 import sharp from "sharp"
 
-// This API route can be used if you want to fetch gallery images client-side
 export async function GET() {
   try {
     // Define the directory path relative to the public folder
@@ -14,53 +12,47 @@ export async function GET() {
     const files = await readdir(directoryPath)
 
     // Filter for image files
-    const imageExtensions = ["jpg", "jpeg", "png", "gif", "heic", "webp"]
-    const images = files.filter((file) => {
+    const imageExtensions = ["jpg", "jpeg", "png", "gif", "webp"]
+    const imageFiles = files.filter((file) => {
       const extension = path.extname(file).toLowerCase().substring(1)
       return imageExtensions.includes(extension)
     })
 
-    // Get image dimensions and create image objects
-    const imagePromises = images.map(async (image, index) => {
-      const imagePath = path.join(directoryPath, image)
+    // Create image objects with dimensions
+    const imagePromises = imageFiles.map(async (file, index) => {
+      const filePath = path.join(directoryPath, file)
 
       try {
-        // Get file stats
-        const fileStats = await stat(imagePath)
-
         // Get image dimensions using sharp
-        const metadata = await sharp(imagePath).metadata()
+        const metadata = await sharp(filePath).metadata()
 
         return {
           id: index,
-          src: `public/image/more_photos/${image}`,
-          thumbnail: `public/image/more_photos/${image}`,
-          alt: image.replace(/\.[^/.]+$/, ""), // Remove file extension for alt text
-          width: metadata.width || 200,
+          src: `/image/more_photos/${file}`,
+          thumbnail: `/image/more_photos/${file}`,
+          alt: file.replace(/\.[^/.]+$/, ""), // Remove file extension for alt text
+          width: metadata.width || 1200,
           height: metadata.height || 800,
-          size: fileStats.size,
-          created: fileStats.birthtime,
         }
-      } catch (error) {
-        console.error(`Error processing image ${image}:`, error)
+      } catch (err) {
+        console.error(`Error processing image ${file}:`, err)
+        // Return default dimensions if we can't get the actual ones
         return {
           id: index,
-          src: `public/image/more_photos/${image}`,
-          thumbnail: `public/image/more_photos/${image}`,
-          alt: image.replace(/\.[^/.]+$/, ""),
+          src: `/image/more_photos/${file}`,
+          thumbnail: `/image/more_photos/${file}`,
+          alt: file.replace(/\.[^/.]+$/, ""),
           width: 1200,
           height: 800,
-          size: 0,
-          created: new Date(),
         }
       }
     })
 
-    const imageObjects = await Promise.all(imagePromises)
+    const images = await Promise.all(imagePromises)
 
-    return NextResponse.json({ images: imageObjects })
+    return NextResponse.json({ images })
   } catch (error) {
-    console.error("Error reading gallery directory:", error)
+    console.error("Error reading directory:", error)
     return NextResponse.json({ error: "Failed to load gallery images" }, { status: 500 })
   }
 }
