@@ -1184,6 +1184,8 @@ form #start-payment-button:hover {
     border-radius: 10px 10px 10px 10px;
     box-shadow: -1px -2px 10px rgba(0, 28, 64, 0.4980392157);
     padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
 }
 .package .books-library .book .information {
     position: absolute;
