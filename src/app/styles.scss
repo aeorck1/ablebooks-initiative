@@ -1962,14 +1962,16 @@ footer .leggo .social-media .mobile-mail #mail a {
     }
     #meet-the-team .team-members .team {
         scroll-snap-align: center;
-        width: 43%;
-        height: 250px;
+        width: 80%;
+height: auto;
+        // height: 250px;
     }
     #meet-the-team .team-members .team img {
-        width: 100px;
+        width: 200px;
     }
     #meet-the-team .team-members .team .name {
         font-size: 12px;
+        padding-bottom: 10px;
     }
     #meet-the-team .team-members .team .social-media img {
         width: 15px;
