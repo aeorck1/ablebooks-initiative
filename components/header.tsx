@@ -52,31 +52,31 @@ export default function Header() {
     >
       <div className="heading head logo-head">
    <div className="logo-image">
-    <div className="logo-background">
-    <div className="toph">
+    <div className="logo_background">
+    <div>
           <Link href="/" className="toph">
-            <Image 
+            <img
               src="/image/logo.png" 
               alt="ABLEBOOKS AFRICA Logo" 
               className="logo"
-              width={150} 
-              height={50} 
+             
             />
           </Link>
         </div>
     </div>
-   </div>
-
-        {/* Desktop Navigation */}
-        <nav className="desktop">
-          <ul className="nav">
+    <nav className="desktop">
+          <ul>
             <li><Link href="/" className="a">Home</Link></li>
             <li><Link href="/books" className="a">Books</Link></li>
             <li><Link href="/gallery" className="a">Gallery</Link></li>
-            <li><Link href="/about">About</Link></li>
+            <li><Link href="/about-us">About</Link></li>
             <li><Link href="/contact">Contact</Link></li>
           </ul>
         </nav>
+   </div>
+
+        {/* Desktop Navigation */}
+      
 
         {/* Mobile Menu Button */}
         <div className="hamburger" onClick={openNav} style={{ display: isNavOpen ? "none" : "block" }}>
@@ -92,7 +92,7 @@ export default function Header() {
             <Link href="/" onClick={closeNav}>Home</Link>
             <Link href="/books" onClick={closeNav}>Books</Link>
             <Link href="/gallery" onClick={closeNav}>Gallery</Link>
-            <Link href="/about" onClick={closeNav}>About</Link>
+            <Link href="/about-us" onClick={closeNav}>About</Link>
             <Link href="/contact" onClick={closeNav}>Contact</Link>
           </div>
         </div>
