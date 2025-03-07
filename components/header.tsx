@@ -50,6 +50,9 @@ export default function Header() {
       ref={headerRef} 
       className={`header ${isHeaderHidden ? "header_hide" : ""}`}
     >
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"></link>
       <div className="heading head logo-head">
    <div className="logo-image">
     <div className="logo_background">

@@ -43,10 +43,8 @@ export default function BooksPage() {
         <section>
           <div className="package" id="library">
             <div className="cont-header">
-              <h3>New Release</h3>
-              <Link href="#" style={{ display: "none !important" }}>
-                See More
-              </Link>
+              <h3 className="mt-30px">New Release</h3>
+            
             </div>
             <div className="books-library">
               <div className="book">
@@ -61,7 +59,7 @@ export default function BooksPage() {
                 </div>
                 <div className="title">Dolly's World</div>
                 <a
-                //   className="read"
+                  className="read"
                 style={{ color: "white", backgroundColor: "#69180b", padding:"5px 15px", width:"fit-content", borderRadius:"5px", margin:"0 auto" }}  
                   href="https://drive.google.com/file/d/18ZuTRpmj-Egmq7NT5S3QpPvxjBdzf1UZ/view?usp=drive_link"
                   target="_blank"
@@ -95,6 +93,7 @@ export default function BooksPage() {
                 <div className="title">Dolly's World</div>
                 <a
                   className="read text-black"
+                  style={{ color: "white", backgroundColor: "#69180b", padding:"5px 15px", width:"fit-content", borderRadius:"5px", margin:"0 auto" }}  
                   href="https://drive.google.com/file/d/18ZuTRpmj-Egmq7NT5S3QpPvxjBdzf1UZ/view?usp=drive_link"
                   target="_blank"
                   rel="noopener noreferrer"
