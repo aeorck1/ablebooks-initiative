@@ -96,13 +96,17 @@
       display: none;
     }
   
-    .hamburger {
-      display: block !important;
-    }
+  
   
     .header-container {
       padding: 1rem;
     }
   }
   
-  
+  @media (max-width:426px) {
+    .hamburger {
+      animation-duration: 0.5s;
+      animation-fill-mode: both;
+      display: block !important;
+  }
+  }

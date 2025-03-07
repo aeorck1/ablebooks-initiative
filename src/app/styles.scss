@@ -1588,55 +1588,20 @@ footer .leggo .social-media .mobile-mail #mail a {
     height: 100%;
     background-size: cover;
     background-position: center;
-    // animation: slider 12.5s infinite;
 }
-// .slider .slide:nth-child(1) {
-//     background-image: url("./resources/images/desktop-1.jpg");
-//     animation-delay: 0s;
-// }
-// .slider .slide:nth-child(2) {
-//     background-image: url("./resources/images/desktop-2.jpg");
-//     animation-delay: -2.5s;
-// }
-// .slider .slide:nth-child(3) {
-//     background-image: url("./resources/images/desktop-3.jpg");
-//     animation-delay: -5s;
-// }
-// .slider .slide:nth-child(4) {
-//     background-image: url("./resources/images/donation-background.jpg");
-//     animation-delay: -7.5s;
-// }
-// .slider .slide:nth-child(5) {
-//     background-image: url("./resources/images/desktop-4.jpg");
-//     animation-delay: -10s;
-// }
-// @keyframes slider {
-//     0%,
-//     16%,
-//     100% {
-//         transform: translateX(0);
-//         animation-timing-function: ease;
-//     }
-//     20% {
-//         transform: translateX(-100%);
-//         animation-timing-function: step-end;
-//     }
-//     96% {
-//         transform: translateX(100%);
-//         animation-timing-function: ease;
-//     }
-// }
+
 @media (max-width: 1024px) {
     .overlay {
         height: 575px;
     }
 }
-@media (max-width: 768px) {
+@media (max-width: 769px) {
     header .logo-head {
         width: 95%;
         display: flex;
         align-items: center;
     }
+
     header .logo-head .logo-image img {
         width: 40px;
     }
@@ -1796,6 +1761,7 @@ footer .leggo .social-media .mobile-mail #mail a {
     footer .leggo .logo p {
         font-size: 12px;
     }
+
 }
 @media (max-width: 426px) {
     header .logo-head .logo-image span {
@@ -2135,10 +2101,7 @@ footer .leggo .social-media .mobile-mail #mail a {
     overflow-x: hidden;
     transition: 0.3s;
 }
-.hamburger {
-    animation-duration: 0.5s;
-    animation-fill-mode: both;
-}
+
 .overlay-content {
     position: relative;
     top: 25%;
