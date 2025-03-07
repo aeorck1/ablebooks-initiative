@@ -70,7 +70,7 @@ export default function Header() {
             <li><Link href="/books" className="a">Books</Link></li>
             <li><Link href="/gallery" className="a">Gallery</Link></li>
             <li><Link href="/about-us">About</Link></li>
-            <li><Link href="/contact">Contact</Link></li>
+            <li><Link href="/support">Support</Link></li>
           </ul>
         </nav>
    </div>
@@ -93,7 +93,7 @@ export default function Header() {
             <Link href="/books" onClick={closeNav}>Books</Link>
             <Link href="/gallery" onClick={closeNav}>Gallery</Link>
             <Link href="/about-us" onClick={closeNav}>About</Link>
-            <Link href="/contact" onClick={closeNav}>Contact</Link>
+            <Link href="/support" onClick={closeNav}>Support</Link>
           </div>
         </div>
       </div>
