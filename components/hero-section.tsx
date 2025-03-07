@@ -22,7 +22,7 @@ export default function HeroSection() {
             <h1>Bridging the gap with illustrative and Representative storybooks.</h1>
 
             <div className="get book">
-              Welcome to AbleBooks Africa where we nurture the early learning journey of children with disabilities
+              Welcome to AbleBooks Initiative where we nurture the early learning journey of children with disabilities
               through disability-inclusive storytelling.
             </div>
 
