@@ -1,14 +1,23 @@
 "use client"
 
 import type React from "react"
-
 import { useState, type FormEvent } from "react"
+import { usePaystackPayment } from "react-paystack"
 
 interface FormData {
   email: string
   firstName: string
   lastName: string
   amount: string
+}
+
+interface PaystackResponse {
+  reference: string
+  trans: string
+  status: string
+  message: string
+  transaction: string
+  trxref: string
 }
 
 export default function PaymentForm() {
@@ -33,41 +42,56 @@ export default function PaymentForm() {
     })
   }
 
-  const payWithPaystack = async (e: FormEvent) => {
+  // Paystack configuration
+  const config = {
+    reference: `ref-${Math.floor(Math.random() * 1000000000)}`,
+    email: formData.email,
+    amount: formData.amount ? Number.parseFloat(formData.amount) * 100 : 0, // Convert to kobo
+    publicKey: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY || "pk_live_a3e87b987e26df178975b2461258c917d9ebfb60",
+    currency: "NGN",
+    metadata: {
+      custom_fields: [
+        {
+          display_name: "First Name",
+          variable_name: "first_name",
+          value: formData.firstName,
+        },
+        {
+          display_name: "Last Name",
+          variable_name: "last_name",
+          value: formData.lastName,
+        },
+      ],
+    },
+  }
+
+  // Initialize Paystack payment hook
+  const initializePayment = usePaystackPayment(config)
+
+  // Success callback
+  const onSuccess = (response: PaystackResponse) => {
+    console.log("Payment complete! Reference:", response.reference)
+    alert(`Thank you for your donation! Reference: ${response.reference}`)
+  }
+
+  // Close callback
+  const onClose = () => {
+    console.log("Payment window closed")
+    alert("Payment canceled")
+  }
+
+  const payWithPaystack = (e: FormEvent) => {
     e.preventDefault()
 
-    // This is where you would integrate with Paystack
-    // For example:
-    try {
-      // Example implementation - replace with actual Paystack integration
-      console.log("Processing payment with Paystack", formData)
-
-      // You would typically initialize Paystack here
-      // For example:
-      if (window.PaystackPop) {
-        const handler = window.PaystackPop.setup({
-          key: 'your_paystack_public_key',
-          email: formData.email,
-          amount: parseFloat(formData.amount) * 100, // Paystack expects amount in kobo
-          currency: 'NGN',
-          ref: `ref-${Math.floor(Math.random() * 1000000000)}`,
-          callback: function(response: any) {
-            // Handle successful payment
-            console.log('Payment complete! Reference:', response.reference);
-          },
-          onClose: function() {
-            // Handle when user closes payment modal
-            console.log('Payment window closed');
-          }
-        });
-        handler.openIframe();
-      }
-
-      alert("Thank you for your donation! This is a placeholder for the actual payment processing.")
-    } catch (error) {
-      console.error("Payment error:", error)
-      alert("There was an error processing your payment. Please try again.")
+    // Validate form
+    if (!formData.email || !formData.firstName || !formData.lastName || !formData.amount) {
+      alert("Please fill all fields")
+      return
     }
+
+    // Initialize payment
+    // @ts-ignore - The type definitions for usePaystackPayment are not perfect
+    initializePayment(onSuccess, onClose)
   }
 
   return (
