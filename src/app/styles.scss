@@ -1634,6 +1634,8 @@ footer .leggo .social-media .mobile-mail #mail a {
 @media (max-width: 768px) {
     header .logo-head {
         width: 95%;
+        display: flex;
+        align-items: center;
     }
     header .logo-head .logo-image img {
         width: 40px;
@@ -1805,7 +1807,7 @@ footer .leggo .social-media .mobile-mail #mail a {
     header .logo-head .logo-image .logo_background {
         background-color: transparent;
         width: auto;
-        height: auto;
+        // height: auto;
     }
     header .logo-head .logo-image .logo_background img {
         width: 100px;
