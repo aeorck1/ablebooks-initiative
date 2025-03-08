@@ -60,7 +60,7 @@ export default function Header() {
           <Link href="/" className="toph">
             <img
               src="/image/logo.png" 
-              alt="ABLEBOOKS AFRICA Logo" 
+              alt="ABLEBOOKS INITIATIVE Logo" 
               className="logo"
              
             />
