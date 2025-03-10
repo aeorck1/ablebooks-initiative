@@ -1,8 +1,32 @@
 "use client"
 
 import type React from "react"
-import { useState, type FormEvent } from "react"
-import { usePaystackPayment } from "react-paystack"
+import { useState, type FormEvent, useEffect } from "react"
+import dynamic from "next/dynamic"
+
+// Dynamically import the Paystack hook with SSR disabled
+const PaystackButton = dynamic(
+  async () => {
+    const { usePaystackPayment } = await import("react-paystack")
+    return ({ config, onSuccess, onClose }: any) => {
+      const initializePayment = usePaystackPayment(config)
+      return (
+        <button
+          type="submit"
+          id="start-payment-button"
+          onClick={(e) => {
+            e.preventDefault()
+            // @ts-ignore - The type definitions for usePaystackPayment are not perfect
+            initializePayment(onSuccess, onClose)
+          }}
+        >
+          Buy a book for a child
+        </button>
+      )
+    }
+  },
+  { ssr: false }, // This is the key part - disable SSR for this component
+)
 
 interface FormData {
   email: string
@@ -27,6 +51,13 @@ export default function PaymentForm() {
     lastName: "",
     amount: "",
   })
+
+  const [isClient, setIsClient] = useState(false)
+
+  // Set isClient to true when component mounts (client-side only)
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target
@@ -65,9 +96,6 @@ export default function PaymentForm() {
     },
   }
 
-  // Initialize Paystack payment hook
-  const initializePayment = usePaystackPayment(config)
-
   // Success callback
   const onSuccess = (response: PaystackResponse) => {
     console.log("Payment complete! Reference:", response.reference)
@@ -80,22 +108,20 @@ export default function PaymentForm() {
     alert("Payment canceled")
   }
 
-  const payWithPaystack = (e: FormEvent) => {
+  const validateForm = (e: FormEvent) => {
     e.preventDefault()
 
     // Validate form
     if (!formData.email || !formData.firstName || !formData.lastName || !formData.amount) {
       alert("Please fill all fields")
-      return
+      return false
     }
 
-    // Initialize payment
-    // @ts-ignore - The type definitions for usePaystackPayment are not perfect
-    initializePayment(onSuccess, onClose)
+    return true
   }
 
   return (
-    <form id="paymentForm" method="post" onSubmit={payWithPaystack}>
+    <form id="paymentForm" method="post" onSubmit={validateForm}>
       <div className="form-group">
         <label htmlFor="email-address">Email Address:</label>
         <input
@@ -120,9 +146,13 @@ export default function PaymentForm() {
         <input type="number" id="amount" value={formData.amount} onChange={handleChange} required />
       </div>
       <div className="form-submit">
-        <button type="submit" id="start-payment-button">
-          Buy a book for a child
-        </button>
+        {isClient ? (
+          <PaystackButton config={config} onSuccess={onSuccess} onClose={onClose} />
+        ) : (
+          <button type="submit" id="start-payment-button" disabled>
+            Buy a book for a child
+          </button>
+        )}
       </div>
     </form>
   )

@@ -32,7 +32,7 @@ export default function DonatePage() {
             <PaymentForm />
           </div>
         </div>
-       )} 
+      )}
 
       <div className="payment-section">
         <div className="quote payment">
@@ -42,8 +42,8 @@ export default function DonatePage() {
               society?
             </p>
             <p>
-              Please, be part of our story. With the storybooks from Ablebooks Africa, children with disabilities get
-              the chance to relate with their stories and improve their literacy skills while having fun. Be part of
+              Please, be part of our story. With the storybooks from Ablebooks Initiative, children with disabilities
+              get the chance to relate with their stories and improve their literacy skills while having fun. Be part of
               this initiative by giving your support.
             </p>
           </div>
