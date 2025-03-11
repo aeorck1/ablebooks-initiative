@@ -303,18 +303,22 @@ section {
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    font-weight: 700;
+    font-weight: 600;
     border-radius: 20px;
-    font-size: 24px;
+    font-size: 20px;
     text-transform: uppercase;
     padding: 5px 15px;
     height: 60px;
     transition: all 0.4s ease-in-out;
+    background-color: var(--header-backgnd);
+    color: var(--body-background);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 .booklog .contents .but a:hover {
     background-color: var(--body-background);
     color: var(--header-backgnd);
     border: 1px solid var(--header-backgnd);
+    box-shadow: 2px 2px 5px rgba(81, 80, 80, 0.5);
 }
 .top-page {
     display: none;
@@ -1762,6 +1766,7 @@ footer .leggo .social-media .mobile-mail #mail a {
     }
     footer .leggo .logo p {
         font-size: 12px;
+        display: none;
     }
 
 }
@@ -1783,6 +1788,12 @@ footer .leggo .social-media .mobile-mail #mail a {
     }
 
 
+ .booklog .contents .but a{
+     font-size: 14px;
+     font-weight: 400;
+
+    }   
+
     .xy{
         
         height: 350px;
@@ -1798,12 +1809,14 @@ footer .leggo .social-media .mobile-mail #mail a {
     .art .biggie .content h1 {
         font-size: var(--mobile-header-size);
         width: 80%;
+        
     }
     .art .biggie .content .get {
         font-size: 12px;
         font-weight: 500;
         opacity: 0.8;
         width: 85%;
+        
     }
     .art .herodom {
         align-items: normal;
@@ -1840,6 +1853,8 @@ footer .leggo .social-media .mobile-mail #mail a {
         height: fit-content;
         width: 85%;
         margin: 0 auto 50px;
+        align-items: center;
+        gap:20px;
     }
     .booklog .contents p {
         font-size: 14px;
@@ -1865,6 +1880,27 @@ footer .leggo .social-media .mobile-mail #mail a {
     .mansima .object-container .container-content .details {
         font-size: 12px;
     }
+    .mansima .object-container{
+        width: 100%;
+        .container-content{
+            width: 100%;
+            &:hover{
+                background-color: white;
+           .details{
+            color: var(--header-backgnd);
+            font-weight: 500;
+           }
+           .image_and_heading{
+            color: var(--header-backgnd);
+            img{
+                filter: brightness(0) saturate(100%) invert(12%) sepia(63%) saturate(2536%) hue-rotate(352deg) brightness(97%) contrast(101%);
+            }
+           }
+            }
+        }
+    }
+
+
     #image-gallery {
         height: auto;
     }

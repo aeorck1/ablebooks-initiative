@@ -22,7 +22,7 @@ const anton = Anton({
 export const metadata: Metadata = {
   title: "ACCESSIBLE-DISABILITY BOOKS FOR LEARNING AND EDUCATION INITIATIVE (ABLEBOOKS INITIATIVE)",
   description:
-    "Bridging The Gap With Illustrative And Representative Storybooks. Welcome to AbleBooks Africa where we nurture the early learning journey of children with disabilities through disability-inclusive storytelling",
+    "Bridging The Gap With Illustrative And Representative Storybooks. Welcome to AbleBooks Initiative where we nurture the early learning journey of children with disabilities through disability-inclusive storytelling",
   icons: {
     icon: "/images/fav-icon.ico",
   },
